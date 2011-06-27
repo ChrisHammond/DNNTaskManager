@@ -107,6 +107,8 @@
     <Compile Include="Components\FeatureController.cs" />
     <Compile Include="Components\Task.cs" />
     <Compile Include="Components\TaskController.cs" />
+    <Compile Include="Components\Taxonomy\Content.cs" />
+    <Compile Include="Components\Taxonomy\Terms.cs" />
     <Compile Include="Data\DataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\DataProviders\SqlDataProvider\SqlDataProvider.cs" />
