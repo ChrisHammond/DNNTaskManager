@@ -11,6 +11,7 @@
 */
 
 using System;
+using DotNetNuke.Modules.TaskManager.Components;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Modules.Actions;
@@ -52,7 +53,8 @@ namespace DotNetNuke.Modules.TaskManager
         {
             try
             {
-
+                rptTaskList.DataSource = TaskController.GetTasks(ModuleId);
+                rptTaskList.DataBind();
             }
             catch (Exception exc) //Module failed to load
             {

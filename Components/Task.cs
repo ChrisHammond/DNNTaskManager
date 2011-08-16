@@ -43,7 +43,7 @@ namespace DotNetNuke.Modules.TaskManager.Components
         ///<summary>
         /// A date for the actual completion date of the task
         ///</summary>
-        public DateTime CompletedOnDate { get; set; }
+        public DateTime? CompletedOnDate { get; set; }
 
         ///<summary>
         /// An integer for the user id of the user who created the task

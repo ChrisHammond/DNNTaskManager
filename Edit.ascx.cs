@@ -11,6 +11,8 @@
 */
 
 using System;
+using DotNetNuke.Entities.Users;
+using DotNetNuke.Modules.TaskManager.Components;
 using DotNetNuke.Services.Exceptions;
 
 namespace DotNetNuke.Modules.TaskManager
@@ -47,6 +49,14 @@ namespace DotNetNuke.Modules.TaskManager
             try
             {
                 //Implement your edit logic for your module
+                if(!Page.IsPostBack)
+                {
+                    ddlAssignedUser.DataSource = UserController.GetUsers(PortalId);
+                    ddlAssignedUser.DataTextField = "Username";
+                    ddlAssignedUser.DataValueField = "UserId";
+                    ddlAssignedUser.DataBind();
+                }
+
 
             }
             catch (Exception exc) //Module failed to load
@@ -56,6 +66,45 @@ namespace DotNetNuke.Modules.TaskManager
         }
 
         #endregion
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            Task t;
+            t = new Task
+                    {
+                        AssignedUserId = Convert.ToInt32(ddlAssignedUser.SelectedValue),
+                        //CompletedOnDate = Convert.ToDateTime(txtCompletionDate.Text.Trim()),
+                        CreatedByUserId = UserId,
+                        CreatedOnDate = DateTime.Now,
+                        //TargetCompletionDate = Convert.ToDateTime(txtTargetCompletionDate.Text.Trim()),
+                        TaskName = txtName.Text.Trim(),
+                        TaskDescription = txtDescription.Text.Trim(),
+                        ModuleId = ModuleId
+                    };
+            //check for dates
+
+            DateTime outputDate;
+            if (DateTime.TryParse(txtCompletionDate.Text.Trim(), out outputDate))
+            {
+                t.CompletedOnDate = outputDate;
+            }
+
+            if (DateTime.TryParse(txtTargetCompletionDate.Text.Trim(), out outputDate))
+            {
+                t.TargetCompletionDate = outputDate;
+            }
+
+
+
+            TaskController.SaveTask(t, TabId);
+            Response.Redirect(DotNetNuke.Common.Globals.NavigateURL());
+            
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(DotNetNuke.Common.Globals.NavigateURL());
+        }
 
     }
 
