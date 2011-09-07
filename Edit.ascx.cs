@@ -55,6 +55,19 @@ namespace DotNetNuke.Modules.TaskManager
                     ddlAssignedUser.DataTextField = "Username";
                     ddlAssignedUser.DataValueField = "UserId";
                     ddlAssignedUser.DataBind();
+
+                    if(TaskId>0)
+                    {
+                        var task = TaskController.GetTask(TaskId);
+                        if(task!=null)
+                        {
+                            txtName.Text = task.TaskName;
+                            txtDescription.Text = task.TaskDescription;
+                            txtTargetCompletionDate.Text = task.TargetCompletionDate.ToString();
+                            txtCompletionDate.Text = task.CompletedOnDate.ToString();
+                            ddlAssignedUser.Items.FindByValue(task.AssignedUserId.ToString()).Selected = true;
+                        }
+                    }
                 }
 
 
@@ -70,18 +83,36 @@ namespace DotNetNuke.Modules.TaskManager
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             Task t;
-            t = new Task
-                    {
-                        AssignedUserId = Convert.ToInt32(ddlAssignedUser.SelectedValue),
-                        //CompletedOnDate = Convert.ToDateTime(txtCompletionDate.Text.Trim()),
-                        CreatedByUserId = UserId,
-                        CreatedOnDate = DateTime.Now,
-                        //TargetCompletionDate = Convert.ToDateTime(txtTargetCompletionDate.Text.Trim()),
-                        TaskName = txtName.Text.Trim(),
-                        TaskDescription = txtDescription.Text.Trim(),
-                        ModuleId = ModuleId
-                    };
+
+            if(TaskId>0)
+            {
+                t = TaskController.GetTask(TaskId);
+                t.TaskName = txtName.Text.Trim();
+                t.TaskDescription = txtDescription.Text.Trim();
+                t.LastModifiedByUserId = UserId;
+                t.LastModifiedOnDate = DateTime.Now;
+                t.AssignedUserId = Convert.ToInt32(ddlAssignedUser.SelectedValue);
+            }
+            else
+            {
+                
+            
+                t = new Task
+                        {
+                            AssignedUserId = Convert.ToInt32(ddlAssignedUser.SelectedValue),
+                            //CompletedOnDate = Convert.ToDateTime(txtCompletionDate.Text.Trim()),
+                            CreatedByUserId = UserId,
+                            CreatedOnDate = DateTime.Now,
+                            //TargetCompletionDate = Convert.ToDateTime(txtTargetCompletionDate.Text.Trim()),
+                            TaskName = txtName.Text.Trim(),
+                            TaskDescription = txtDescription.Text.Trim(),
+                            ModuleId = ModuleId
+                        };
+
+            }
+
             //check for dates
+
 
             DateTime outputDate;
             if (DateTime.TryParse(txtCompletionDate.Text.Trim(), out outputDate))

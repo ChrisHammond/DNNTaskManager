@@ -10,6 +10,8 @@
 ' 
 */
 
+using System;
+
 namespace DotNetNuke.Modules.TaskManager
 {
 
@@ -18,6 +20,17 @@ namespace DotNetNuke.Modules.TaskManager
         //with this base class you can provide any custom properties and methods that all your controls can access here, you can also access all the DNN 
         // methods and properties available off of portalmodulebase such as TabId, UserId, UserInfo, etc.
 
+        public int TaskId
+        {
+            get
+            {
+                var qs = Request.QueryString["tid"];
+                if (qs != null)
+                    return Convert.ToInt32(qs);
+                return -1;
+            }
+            
+        }
 
     }
 
