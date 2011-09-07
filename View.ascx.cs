@@ -11,12 +11,14 @@
 */
 
 using System;
+using System.Web.UI.WebControls;
 using DotNetNuke.Modules.TaskManager.Components;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Modules.Actions;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.Security;
+using DotNetNuke.UI.Utilities;
 
 
 namespace DotNetNuke.Modules.TaskManager
@@ -61,6 +63,52 @@ namespace DotNetNuke.Modules.TaskManager
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
         }
+
+
+        protected void rptTaskListOnItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.AlternatingItem || e.Item.ItemType == ListItemType.Item)
+            {
+                var lnkEdit = e.Item.FindControl("lnkEdit") as LinkButton;
+                var lnkDelete = e.Item.FindControl("lnkDelete") as LinkButton;
+
+                var pnlAdminControls = e.Item.FindControl("pnlAdmin") as Panel;
+
+                var curTask = (Task)e.Item.DataItem;
+
+                if (IsEditable && lnkDelete!=null && lnkEdit != null && pnlAdminControls != null)
+                {
+                    pnlAdminControls.Visible = true;
+                    lnkDelete.CommandArgument = lnkEdit.CommandArgument = curTask.TaskId.ToString();
+                    lnkDelete.Enabled = lnkDelete.Visible=lnkEdit.Enabled = lnkEdit.Visible = true;
+
+                    ClientAPI.AddButtonConfirm(lnkDelete,Localization.GetString("ConfirmDelete",LocalResourceFile));
+
+
+                }
+                else
+                {
+                    pnlAdminControls.Visible = false;
+                }
+            }
+        }
+
+
+        public void rptTaskListOnItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Edit")
+            {
+                Response.Redirect(EditUrl(string.Empty, string.Empty, "Edit", "tid=" + e.CommandArgument));
+            }
+
+            if (e.CommandName == "Delete")
+            {
+                TaskController.DeleteTask(Convert.ToInt32(e.CommandArgument));
+            }
+
+            Response.Redirect(DotNetNuke.Common.Globals.NavigateURL());
+        }
+
 
         #endregion
 
