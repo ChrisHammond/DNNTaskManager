@@ -19,8 +19,8 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly: AssemblyTitle("DotNetNuke CorporationTaskManager")]
-[assembly: AssemblyDescription("A DotNetNuke Module from DotNetNuke Corporation Software")]
+[assembly: AssemblyTitle("DNNTaskManager")]
+[assembly: AssemblyDescription("A DotNetNuke Module from DotNetNuke Corporation")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
