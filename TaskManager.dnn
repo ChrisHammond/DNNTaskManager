@@ -11,7 +11,7 @@
       </owner>
       <license>
 /*
-' Copyright (c) 2010  DotNetNuke Corporation
+' Copyright (c) 2011  DotNetNuke Corporation
 '  All rights reserved.
 ' 
 ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
@@ -23,7 +23,7 @@
 */
       </license>
       <releaseNotes>
-	Add your release notes here.
+	    This is the first version of our module v00.00.01, it is limited in functionality, but does work.
       </releaseNotes>
       <components>
         <component type="Script">
