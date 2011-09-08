@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="TaskManager" type="Module" version="00.00.01">
+    <package name="TaskManager" type="Module" version="00.00.02">
       <friendlyName>TaskManager</friendlyName>
       <description>DotNetNuke Corporation TaskManager module</description>
       <owner>
