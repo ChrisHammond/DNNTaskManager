@@ -1,4 +1,4 @@
-﻿<h3>Dnn7TmDal1</h3>
+﻿<h3>DNN7 Task Manager DAL1</h3>
 <p class="Contributor">
 	DotNetNuke Corporation <br />
 	<a href="mailto:training@dnncorp.com">training@dnncorp.com</a><br />
@@ -6,7 +6,7 @@
 </p>
 <hr/>
 <div class="License">
-	<h3>About the Dnn7TmDal1</h3>
+	<h3>About the DNN7 Task Manager DAL1</h3>
 	<p class="Owner">
 		<b>Version 0.0.1</b><br /><br />
 	</p>
