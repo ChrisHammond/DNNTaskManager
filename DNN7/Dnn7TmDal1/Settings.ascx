@@ -21,3 +21,5 @@
 
 
 --%>
+
+<asp:Label runat="server" ID="lblNoSettings" resourcekey="lblNoSettings"></asp:Label>
