@@ -163,6 +163,7 @@ SELECT
     , t.TaskDescription
     , t.AssignedUserId
     , t.TargetCompletionDate
+	, t.CompletedOnDate
     , t.CreatedOnDate
     , t.CreatedByUserId
     , t.LastModifiedOnDate
@@ -188,6 +189,7 @@ SELECT
     , t.TaskDescription
     , t.AssignedUserId
     , t.TargetCompletionDate
+	, t.CompletedOnDate
     , t.CreatedOnDate
     , t.CreatedByUserId
     , t.LastModifiedOnDate
