@@ -15,29 +15,35 @@
 '// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
 '// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 '// DEALINGS IN THE SOFTWARE.
-Imports DotNetNuke.Entities.Modules
+Imports DotNetNuke.Modules.VBDnn7TmDal1.Data
+Imports DotNetNuke.Common.Utilities
 
+Public Class TaskController
 
-' <summary>
-' This base class can be used to define custom properties for multiple controls. 
-' An example module, DNNSimpleArticle (http://dnnsimplearticle.codeplex.com) uses this for an ArticleId
-' 
-' Because the class inherits from PortalModuleBase, properties like ModuleId, TabId, UserId, and others, 
-' are accessible to your module's controls (that inherity from VBDnn7TmDal1ModuleBase
-' 
-' </summary>
+    Public Shared Function GetTask(ByVal taskId As Integer) As Task
+        Return CBO.FillObject(Of Task)(DataProvider.Instance().GetTask(taskId))
+    End Function
 
-Public Class VBDnn7TmDal1ModuleBase
-    Inherits PortalModuleBase
+    Public Shared Function GetTasks(ByVal taskId As Integer) As List(Of Task)
+        Return CBO.FillCollection(Of Task)(DataProvider.Instance().GetTasks(taskId))
+    End Function
 
-    Public ReadOnly Property TaskId() As Integer
-        Get
-            Dim qs = Request.QueryString("tid")
-            If qs IsNot Nothing Then
-                Return Convert.ToInt32(qs)
-            End If
-            Return -1
-        End Get
-    End Property
+    Public Shared Sub DeleteTask(ByVal taskId As Integer)
+        DataProvider.Instance().DeleteTask(taskId)
+    End Sub
+
+    Public Shared Sub DeleteTasks(ByVal moduleId As Integer)
+        DataProvider.Instance().DeleteTasks(moduleId)
+    End Sub
+
+    Public Shared Function SaveTask(ByVal t As Task, ByVal tabId As Integer) As Integer
+        If t.TaskId < 1 Then
+            t.TaskId = DataProvider.Instance().AddTask(t)
+        Else
+            DataProvider.Instance().UpdateTask(t)
+        End If
+        Return t.TaskId
+    End Function
+
 
 End Class

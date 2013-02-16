@@ -1,17 +1,28 @@
-﻿' Copyright (c) 2013  DotNetNuke Corporation
-'  All rights reserved.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-' TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-' THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-' CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-' DEALINGS IN THE SOFTWARE.
-' 
+﻿'//DotNetNuke - http://www.dotnetnuke.com
+'// Copyright (c) 2013
+'// by DotNetNuke Corporation
+'//
+'// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+'// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+'// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+'// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+'//
+'// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+'// of the Software.
+'//
+'// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+'// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+'// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+'// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+'// DEALINGS IN THE SOFTWARE.
+
 Imports DotNetNuke
 Imports DotNetNuke.Entities.Modules.Actions
 Imports DotNetNuke.Entities.Modules
 Imports DotNetNuke.Services.Exceptions
 Imports DotNetNuke.Services.Localization
+Imports DotNetNuke.Common.Utilities
+Imports DotNetNuke.UI.Utilities
 
 ''' <summary>
 ''' The View class displays the content
@@ -39,7 +50,8 @@ Public Class View
     ''' -----------------------------------------------------------------------------
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Try
-
+            rptTaskList.DataSource = TaskController.GetTasks(ModuleId)
+            rptTaskList.DataBind()
         Catch exc As Exception
             Exceptions.ProcessModuleLoadException(Me, exc)
         End Try
@@ -64,4 +76,37 @@ Public Class View
         End Get
     End Property
 
+    Protected Sub rptTaskListOnItemDataBound(ByVal sender As Object, ByVal e As RepeaterItemEventArgs)
+
+        If e.Item.ItemType = ListItemType.AlternatingItem Or e.Item.ItemType = ListItemType.Item Then
+
+            Dim lnkEdit As LinkButton = e.Item.FindControl("lnkEdit")
+            Dim lnkDelete As LinkButton = e.Item.FindControl("lnkDelete")
+            Dim pnlAdminControls As Panel = e.Item.FindControl("pnlAdminControls")
+            Dim curTask As Task = e.Item.DataItem
+
+            If IsEditable AndAlso Not lnkDelete Is Nothing AndAlso Not lnkEdit Is Nothing And Not pnlAdminControls Is Nothing Then
+                pnlAdminControls.Visible = True
+                lnkDelete.CommandArgument = lnkEdit.CommandArgument = curTask.TaskId.ToString()
+                lnkDelete.Enabled = lnkEdit.Enabled = lnkDelete.Visible = lnkEdit.Visible = True
+
+                ClientAPI.AddButtonConfirm(lnkDelete, Localization.GetString("ConfirmDelete", LocalResourceFile))
+            Else
+                pnlAdminControls.Visible = False
+            End If
+
+        End If
+
+
+    End Sub
+
+    Protected Sub rptTaskListOnItemCommand(ByVal source As Object, ByVal e As RepeaterCommandEventArgs)
+        If e.CommandName = "Edit" Then
+            Response.Redirect(EditUrl(String.Empty, String.Empty, "Edit", "tid=" + e.CommandArgument))
+        End If
+        If e.CommandName = "Delete" Then
+            TaskController.DeleteTask(e.CommandArgument)
+        End If
+        Response.Redirect(DotNetNuke.Common.Globals.NavigateURL())
+    End Sub
 End Class

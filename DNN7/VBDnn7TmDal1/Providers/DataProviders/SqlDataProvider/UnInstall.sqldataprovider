@@ -1,5 +1,4 @@
-﻿
-/************************************************************/
+﻿/************************************************************/
 /*****              SqlDataProvider                     *****/
 /*****                                                  *****/
 /*****                                                  *****/
@@ -8,6 +7,35 @@
 /*****       for {databaseOwner} and {objectQualifier}  *****/
 /*****                                                  *****/
 /************************************************************/
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}VBDnn7TmDal1_Task]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}VBDnn7TmDal1_Task]
+GO
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}{objectQualifier}VBDnn7TmDal1_GetTask') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+   DROP PROCEDURE {databaseOwner}{objectQualifier}VBDnn7TmDal1_GetTask
+GO
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}{objectQualifier}VBDnn7TmDal1_GetTasks') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+   DROP PROCEDURE {databaseOwner}{objectQualifier}VBDnn7TmDal1_GetTasks
+GO
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}{objectQualifier}VBDnn7TmDal1_AddTask') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+   DROP PROCEDURE {databaseOwner}{objectQualifier}VBDnn7TmDal1_AddTask
+GO
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}{objectQualifier}VBDnn7TmDal1_UpdateTask') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+   DROP PROCEDURE {objectQualifier}VBDnn7TmDal1_UpdateTask
+GO
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}{objectQualifier}VBDnn7TmDal1_DeleteTask') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+   DROP PROCEDURE {databaseOwner}{objectQualifier}VBDnn7TmDal1_DeleteTask
+GO
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}{objectQualifier}VBDnn7TmDal1_DeleteTasks') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+   DROP PROCEDURE {databaseOwner}{objectQualifier}VBDnn7TmDal1_DeleteTasks
+GO
 
 
 

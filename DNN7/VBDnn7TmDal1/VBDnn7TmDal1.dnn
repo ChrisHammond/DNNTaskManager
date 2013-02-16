@@ -1,8 +1,8 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
     <package name="VBDnn7TmDal1" type="Module" version="00.00.01">
-      <friendlyName>VBDnn7TmDal1</friendlyName>
-      <description>DotNetNuke Corporation VBDnn7TmDal1 module</description>
+      <friendlyName>VB DNN7 TaskManager DAL1</friendlyName>
+      <description>DotNetNuke Corporation Task Manager module for DotNetNuke 7 using the original Data Access Layer (DAL)</description>
       <iconFile>Images/icon_extensions.gif</iconFile>
       <owner>
         <name>DotNetNuke Corporation</name>
@@ -43,7 +43,7 @@
 
         <component type="Module">
           <desktopModule>
-            <moduleName>VBDnn7TmDal1</moduleName>
+            <moduleName>VB DNN7 TaskManager DAL1</moduleName>
             <foldername>VBDnn7TmDal1</foldername>
             <businessControllerClass>DotNetNuke.Modules.VBDnn7TmDal1.Components.FeatureController</businessControllerClass>
             <supportedFeatures />
