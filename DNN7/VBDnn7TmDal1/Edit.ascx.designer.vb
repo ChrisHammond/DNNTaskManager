@@ -12,4 +12,112 @@ Option Explicit On
 
 
 Partial Public Class Edit
+
+    '''<summary>
+    '''lblName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblName As Global.DotNetNuke.UI.UserControls.LabelControl
+
+    '''<summary>
+    '''txtName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtName As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''lblDescription control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblDescription As Global.DotNetNuke.UI.UserControls.LabelControl
+
+    '''<summary>
+    '''txtDescription control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtDescription As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''lblAssignedUser control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblAssignedUser As Global.DotNetNuke.UI.UserControls.LabelControl
+
+    '''<summary>
+    '''ddlAssignedUser control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlAssignedUser As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''lblTargetCompletionDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblTargetCompletionDate As Global.DotNetNuke.UI.UserControls.LabelControl
+
+    '''<summary>
+    '''txtTargetCompletionDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtTargetCompletionDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''lblCompletionDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblCompletionDate As Global.DotNetNuke.UI.UserControls.LabelControl
+
+    '''<summary>
+    '''txtCompletionDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtCompletionDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''btnSubmit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSubmit As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
+    '''btnCancel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnCancel As Global.System.Web.UI.WebControls.LinkButton
 End Class

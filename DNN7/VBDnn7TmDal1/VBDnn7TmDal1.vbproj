@@ -48,6 +48,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\DotNetNuke.dll</HintPath>
     </Reference>
+    <Reference Include="DotNetNuke.WebUtility, Version=4.2.1.783, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\DotNetNuke.WebUtility.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
@@ -90,6 +94,7 @@
   <ItemGroup>
     <Compile Include="Components\FeatureController.vb" />
     <Compile Include="Components\Task.vb" />
+    <Compile Include="Components\TaskController.vb" />
     <Compile Include="Data\DataProvider.vb" />
     <Compile Include="Providers\DataProviders\SqlDataProvider\SqlDataProvider.vb" />
     <Compile Include="Settings.ascx.designer.vb">

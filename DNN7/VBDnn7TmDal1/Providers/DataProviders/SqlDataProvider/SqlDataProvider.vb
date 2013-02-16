@@ -1,12 +1,21 @@
-﻿' Copyright (c) 2013 DotNetNuke Corporation
-'  All rights reserved.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-' TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-' THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-' CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-' DEALINGS IN THE SOFTWARE.
-' 
+﻿'//DotNetNuke - http://www.dotnetnuke.com
+'// Copyright (c) 2013
+'// by DotNetNuke Corporation
+'//
+'// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+'// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+'// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+'// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+'//
+'// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+'// of the Software.
+'//
+'// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+'// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+'// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+'// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+'// DEALINGS IN THE SOFTWARE. 
+
 Imports System
 Imports System.Data
 Imports System.Data.SqlClient
@@ -125,13 +134,51 @@ Namespace Data
 
 #Region "Public Methods"
 
-        'Public Overrides Function GetItems(ByVal ModuleId As Integer) As IDataReader
-        '    Return CType(SqlHelper.ExecuteReader(ConnectionString, NamePrefix + "GetItems", ModuleId), IDataReader)
-        'End Function
+        Public Overrides Function GetTasks(ByVal ModuleId As Integer) As IDataReader
+            Return SqlHelper.ExecuteReader(ConnectionString, NamePrefix + "GetTasks",
+                                           New SqlParameter("@ModuleId", ModuleId))
+        End Function
 
-        'Public Overrides Function GetItem(ByVal ItemId As Integer) As IDataReader
-        '    Return CType(SqlHelper.ExecuteReader(ConnectionString, NamePrefix + "GetItem",ItemId), IDataReader)
-        'End Function
+        Public Overrides Function GetTask(ByVal taskId As Integer) As IDataReader
+            Return SqlHelper.ExecuteReader(ConnectionString, NamePrefix + "GetTask",
+                                           New SqlParameter("@TaskId", taskId))
+        End Function
+
+        Public Overrides Sub DeleteTask(ByVal taskId As Integer)
+            SqlHelper.ExecuteNonQuery(ConnectionString, NamePrefix + "DeleteTask", New SqlParameter("@TaskId", taskId))
+        End Sub
+
+        Public Overrides Sub DeleteTasks(ByVal moduleId As Integer)
+            SqlHelper.ExecuteNonQuery(ConnectionString, NamePrefix + "DeleteTasks", New SqlParameter("@ModuleId", moduleId))
+        End Sub
+
+        Public Overloads Overrides Function AddTask(ByVal t As Task) As Integer
+
+            Return Convert.ToInt32(SqlHelper.ExecuteScalar(ConnectionString, CommandType.StoredProcedure, NamePrefix + "AddTask" _
+                , New SqlParameter("@TaskName", t.TaskName) _
+                , New SqlParameter("@TaskDescription", t.TaskDescription) _
+                , New SqlParameter("@AssignedUserId", t.AssignedUserId) _
+                , New SqlParameter("@ModuleId", t.ModuleId) _
+                , New SqlParameter("@TargetCompletionDate", t.TargetCompletionDate) _
+                , New SqlParameter("@CompletedOnDate", t.CompletedOnDate) _
+                , New SqlParameter("@CreatedByUserId", t.CreatedByUserId)))
+
+        End Function
+
+        Public Overloads Overrides Sub UpdateTask(ByVal t As Task)
+
+            SqlHelper.ExecuteNonQuery(ConnectionString, CommandType.StoredProcedure, NamePrefix + "UpdateTask" _
+                                      , New SqlParameter("@TaskId", t.TaskId) _
+                                      , New SqlParameter("@TaskName", t.TaskName) _
+                                      , New SqlParameter("@TaskDescription", t.TaskDescription) _
+                                      , New SqlParameter("@AssignedUserId", t.AssignedUserId) _
+                                      , New SqlParameter("@ModuleId", t.ModuleId) _
+                                      , New SqlParameter("@TargetCompletionDate", t.TargetCompletionDate) _
+                                      , New SqlParameter("@CompletedOnDate", t.CompletedOnDate) _
+                                      , New SqlParameter("@LastModifiedByUserId", t.LastModifiedByUserId))
+
+        End Sub
+
 #End Region
 
     End Class
