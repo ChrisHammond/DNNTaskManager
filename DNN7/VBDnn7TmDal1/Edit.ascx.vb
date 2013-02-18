@@ -59,8 +59,12 @@ Public Class Edit
                     If Not (task Is Nothing) Then
                         txtName.Text = task.TaskName
                         txtDescription.Text = task.TaskDescription
-                        txtTargetCompletionDate.Text = task.TargetCompletionDate.ToString()
-                        txtCompletionDate.Text = task.CompletedOnDate.ToString()
+                        If (task.TargetCompletionDate <> DateTime.MaxValue) Then
+                            txtTargetCompletionDate.Text = task.TargetCompletionDate.ToString()
+                        End If
+                        If (task.CompletedOnDate <> DateTime.MaxValue) Then
+                            txtCompletionDate.Text = task.CompletedOnDate.ToString()
+                        End If
                         ddlAssignedUser.Items.FindByValue(task.AssignedUserId.ToString()).Selected = True
                     End If
                 End If
@@ -96,9 +100,14 @@ Public Class Edit
         Dim outputDate As DateTime
         If DateTime.TryParse(txtCompletionDate.Text.Trim(), outputDate) Then
             t.CompletedOnDate = outputDate
+        Else
+            t.CompletedOnDate = DateTime.MaxValue
         End If
+
         If DateTime.TryParse(txtTargetCompletionDate.Text.Trim(), outputDate) Then
             t.TargetCompletionDate = outputDate
+        Else
+            t.TargetCompletionDate = DateTime.MaxValue
         End If
 
         TaskController.SaveTask(t, TabId)
