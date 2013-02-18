@@ -82,13 +82,16 @@ Public Class View
 
             Dim lnkEdit As LinkButton = e.Item.FindControl("lnkEdit")
             Dim lnkDelete As LinkButton = e.Item.FindControl("lnkDelete")
-            Dim pnlAdminControls As Panel = e.Item.FindControl("pnlAdminControls")
+            Dim pnlAdminControls As Panel = e.Item.FindControl("pnlAdmin")
             Dim curTask As Task = e.Item.DataItem
 
             If IsEditable AndAlso Not lnkDelete Is Nothing AndAlso Not lnkEdit Is Nothing And Not pnlAdminControls Is Nothing Then
                 pnlAdminControls.Visible = True
                 lnkDelete.CommandArgument = lnkEdit.CommandArgument = curTask.TaskId.ToString()
-                lnkDelete.Enabled = lnkEdit.Enabled = lnkDelete.Visible = lnkEdit.Visible = True
+                lnkDelete.Enabled = True
+                lnkEdit.Enabled = True
+                lnkDelete.Visible = True
+                lnkEdit.Visible = True
 
                 ClientAPI.AddButtonConfirm(lnkDelete, Localization.GetString("ConfirmDelete", LocalResourceFile))
             Else
@@ -102,6 +105,7 @@ Public Class View
 
     Protected Sub rptTaskListOnItemCommand(ByVal source As Object, ByVal e As RepeaterCommandEventArgs)
         If e.CommandName = "Edit" Then
+            'TODO: this doesn't work when popups are enabled. we need to make the buttons hyperlinks and bind during on item data bound
             Response.Redirect(EditUrl(String.Empty, String.Empty, "Edit", "tid=" + e.CommandArgument))
         End If
         If e.CommandName = "Delete" Then
