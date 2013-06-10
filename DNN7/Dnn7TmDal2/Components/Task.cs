@@ -1,5 +1,5 @@
 ﻿/*
-' Copyright (c) 2013 DotNetNuke Corporation
+' Copyright (c) 2013 Christoc.com Software Solutions
 '  All rights reserved.
 ' 
 ' Permission is hereby granted, free of charge, to any person obtaining a copy of this
@@ -24,9 +24,9 @@ using DotNetNuke.Common.Utilities;
 using DotNetNuke.ComponentModel.DataAnnotations;
 using DotNetNuke.Entities.Content;
 
-namespace DotNetNuke.Modules.Dnn7TmDal2.Components
+namespace Christoc.Modules.DnnTaskManagerDal2.Components
 {
-    [TableName("Dnn7TmDal2_Tasks")]
+    [TableName("DnnTaskManagerDal2_Tasks")]
     //setup the primary key for table
     [PrimaryKey("TaskId", AutoIncrement = true)]
     //configure caching using PetaPoco

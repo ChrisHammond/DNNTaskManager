@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Settings.ascx.cs" Inherits="DotNetNuke.Modules.Dnn7TmDal2.Settings" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Settings.ascx.cs" Inherits="Christoc.Modules.DnnTaskManagerDal2.Settings" %>
 
 
 <!-- uncomment the code below to start using the DNN Form pattern to create and update settings -->

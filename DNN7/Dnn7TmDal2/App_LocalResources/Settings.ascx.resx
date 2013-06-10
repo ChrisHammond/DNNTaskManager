@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ControlTitle_settings.Text" xml:space="preserve">
-    <value>Dnn7TmDal2 Settings</value>
+    <value>DnnTaskManagerDal2 Settings</value>
   </data>
   <data name="lblNoSettings.Text" xml:space="preserve">
     <value>There are currently no settings for this module. As a developer you can create custom settings to be displayed here.</value>

@@ -8,11 +8,11 @@
 /*****                                                  *****/
 /************************************************************/
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Dnn7TmDal2_Tasks]') AND type in (N'U'))
-DROP TABLE {databaseOwner}[{objectQualifier}Dnn7TmDal2_Tasks]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}DnnTaskManagerDal2_Tasks]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}DnnTaskManagerDal2_Tasks]
 GO
 
-CREATE TABLE {databaseOwner}{objectQualifier}Dnn7TmDal2_Tasks
+CREATE TABLE {databaseOwner}{objectQualifier}DnnTaskManagerDal2_Tasks
     (
     TaskId int NOT NULL IDENTITY (1, 1),
     TaskName nvarchar(MAX) NOT NULL,
@@ -30,8 +30,8 @@ CREATE TABLE {databaseOwner}{objectQualifier}Dnn7TmDal2_Tasks
 GO
 
 
-ALTER TABLE {databaseOwner}{objectQualifier}Dnn7TmDal2_Tasks ADD CONSTRAINT
-    PK_{objectQualifier}Dnn7TmDal2_Tasks PRIMARY KEY CLUSTERED 
+ALTER TABLE {databaseOwner}{objectQualifier}DnnTaskManagerDal2_Tasks ADD CONSTRAINT
+    PK_{objectQualifier}DnnTaskManagerDal2_Tasks PRIMARY KEY CLUSTERED 
     (
     TaskId
     ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
