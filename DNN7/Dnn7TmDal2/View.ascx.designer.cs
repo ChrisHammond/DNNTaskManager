@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DotNetNuke.Modules.Dnn7TmDal2 {
+namespace Christoc.Modules.DnnTaskManagerDal2 {
     
     
     public partial class View {

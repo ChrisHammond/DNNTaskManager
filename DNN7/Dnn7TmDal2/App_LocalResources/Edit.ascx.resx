@@ -142,7 +142,7 @@
     <value>Name</value>
   </data>
   <data name="BasicSettings.Text" xml:space="preserve">
-    <value>Dnn7TmDal2 Task Basic Settings</value>
+    <value>DnnTaskManagerDal2 Task Basic Settings</value>
   </data>
   <data name="ExpandAll.Text" xml:space="preserve">
     <value>Expand All</value>

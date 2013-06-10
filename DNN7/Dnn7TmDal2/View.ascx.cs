@@ -1,5 +1,5 @@
 ﻿/*
-' Copyright (c) 2013 DotNetNuke Corporation
+' Copyright (c) 2013 Christoc.com Software Solutions
 '  All rights reserved.
 ' 
 ' Permission is hereby granted, free of charge, to any person obtaining a copy of this
@@ -21,7 +21,7 @@
 
 using System;
 using System.Web.UI.WebControls;
-using DotNetNuke.Modules.Dnn7TmDal2.Components;
+using Christoc.Modules.DnnTaskManagerDal2.Components;
 using DotNetNuke.Security;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Entities.Modules;
@@ -29,7 +29,7 @@ using DotNetNuke.Entities.Modules.Actions;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.Utilities;
 
-namespace DotNetNuke.Modules.Dnn7TmDal2
+namespace Christoc.Modules.DnnTaskManagerDal2
 {
     /// -----------------------------------------------------------------------------
     /// <summary>
@@ -39,12 +39,12 @@ namespace DotNetNuke.Modules.Dnn7TmDal2
     /// 
     /// View may be the only control you have in your project depending on the complexity of your module
     /// 
-    /// Because the control inherits from Dnn7TmDal2ModuleBase you have access to any custom properties
+    /// Because the control inherits from DnnTaskManagerDal2ModuleBase you have access to any custom properties
     /// defined there, as well as properties from DNN such as PortalId, ModuleId, TabId, UserId and many more.
     /// 
     /// </summary>
     /// -----------------------------------------------------------------------------
-    public partial class View : Dnn7TmDal2ModuleBase, IActionable
+    public partial class View : DnnTaskManagerDal2ModuleBase, IActionable
     {
         protected void Page_Load(object sender, EventArgs e)
         {

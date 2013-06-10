@@ -1,5 +1,5 @@
 /*
-' Copyright (c) 2013 DotNetNuke Corporation
+' Copyright (c) 2013 Christoc.com Software Solutions
 '  All rights reserved.
 ' 
 ' Permission is hereby granted, free of charge, to any person obtaining a copy of this
@@ -23,12 +23,12 @@ using System.Collections.Generic;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Search;
 
-namespace DotNetNuke.Modules.Dnn7TmDal2.Components
+namespace Christoc.Modules.DnnTaskManagerDal2.Components
 {
 
     /// -----------------------------------------------------------------------------
     /// <summary>
-    /// The Controller class for Dnn7TmDal2
+    /// The Controller class for DnnTaskManagerDal2
     /// 
     /// The FeatureController class is defined as the BusinessController in the manifest file (.dnn)
     /// DotNetNuke will poll this class to find out which Interfaces the class implements. 
@@ -61,18 +61,18 @@ namespace DotNetNuke.Modules.Dnn7TmDal2.Components
         //{
         //string strXML = "";
 
-        //List<Dnn7TmDal2Info> colDnn7TmDal2s = GetDnn7TmDal2s(ModuleID);
-        //if (colDnn7TmDal2s.Count != 0)
+        //List<DnnTaskManagerDal2Info> colDnnTaskManagerDal2s = GetDnnTaskManagerDal2s(ModuleID);
+        //if (colDnnTaskManagerDal2s.Count != 0)
         //{
-        //    strXML += "<Dnn7TmDal2s>";
+        //    strXML += "<DnnTaskManagerDal2s>";
 
-        //    foreach (Dnn7TmDal2Info objDnn7TmDal2 in colDnn7TmDal2s)
+        //    foreach (DnnTaskManagerDal2Info objDnnTaskManagerDal2 in colDnnTaskManagerDal2s)
         //    {
-        //        strXML += "<Dnn7TmDal2>";
-        //        strXML += "<content>" + DotNetNuke.Common.Utilities.XmlUtils.XMLEncode(objDnn7TmDal2.Content) + "</content>";
-        //        strXML += "</Dnn7TmDal2>";
+        //        strXML += "<DnnTaskManagerDal2>";
+        //        strXML += "<content>" + DotNetNuke.Common.Utilities.XmlUtils.XMLEncode(objDnnTaskManagerDal2.Content) + "</content>";
+        //        strXML += "</DnnTaskManagerDal2>";
         //    }
-        //    strXML += "</Dnn7TmDal2s>";
+        //    strXML += "</DnnTaskManagerDal2s>";
         //}
 
         //return strXML;
@@ -91,14 +91,14 @@ namespace DotNetNuke.Modules.Dnn7TmDal2.Components
         /// -----------------------------------------------------------------------------
         //public void ImportModule(int ModuleID, string Content, string Version, int UserID)
         //{
-        //XmlNode xmlDnn7TmDal2s = DotNetNuke.Common.Globals.GetContent(Content, "Dnn7TmDal2s");
-        //foreach (XmlNode xmlDnn7TmDal2 in xmlDnn7TmDal2s.SelectNodes("Dnn7TmDal2"))
+        //XmlNode xmlDnnTaskManagerDal2s = DotNetNuke.Common.Globals.GetContent(Content, "DnnTaskManagerDal2s");
+        //foreach (XmlNode xmlDnnTaskManagerDal2 in xmlDnnTaskManagerDal2s.SelectNodes("DnnTaskManagerDal2"))
         //{
-        //    Dnn7TmDal2Info objDnn7TmDal2 = new Dnn7TmDal2Info();
-        //    objDnn7TmDal2.ModuleId = ModuleID;
-        //    objDnn7TmDal2.Content = xmlDnn7TmDal2.SelectSingleNode("content").InnerText;
-        //    objDnn7TmDal2.CreatedByUser = UserID;
-        //    AddDnn7TmDal2(objDnn7TmDal2);
+        //    DnnTaskManagerDal2Info objDnnTaskManagerDal2 = new DnnTaskManagerDal2Info();
+        //    objDnnTaskManagerDal2.ModuleId = ModuleID;
+        //    objDnnTaskManagerDal2.Content = xmlDnnTaskManagerDal2.SelectSingleNode("content").InnerText;
+        //    objDnnTaskManagerDal2.CreatedByUser = UserID;
+        //    AddDnnTaskManagerDal2(objDnnTaskManagerDal2);
         //}
 
         //	throw new System.NotImplementedException("The method or operation is not implemented.");
@@ -114,11 +114,11 @@ namespace DotNetNuke.Modules.Dnn7TmDal2.Components
         //{
         //SearchItemInfoCollection SearchItemCollection = new SearchItemInfoCollection();
 
-        //List<Dnn7TmDal2Info> colDnn7TmDal2s = GetDnn7TmDal2s(ModInfo.ModuleID);
+        //List<DnnTaskManagerDal2Info> colDnnTaskManagerDal2s = GetDnnTaskManagerDal2s(ModInfo.ModuleID);
 
-        //foreach (Dnn7TmDal2Info objDnn7TmDal2 in colDnn7TmDal2s)
+        //foreach (DnnTaskManagerDal2Info objDnnTaskManagerDal2 in colDnnTaskManagerDal2s)
         //{
-        //    SearchItemInfo SearchItem = new SearchItemInfo(ModInfo.ModuleTitle, objDnn7TmDal2.Content, objDnn7TmDal2.CreatedByUser, objDnn7TmDal2.CreatedDate, ModInfo.ModuleID, objDnn7TmDal2.ItemId.ToString(), objDnn7TmDal2.Content, "ItemId=" + objDnn7TmDal2.ItemId.ToString());
+        //    SearchItemInfo SearchItem = new SearchItemInfo(ModInfo.ModuleTitle, objDnnTaskManagerDal2.Content, objDnnTaskManagerDal2.CreatedByUser, objDnnTaskManagerDal2.CreatedDate, ModInfo.ModuleID, objDnnTaskManagerDal2.ItemId.ToString(), objDnnTaskManagerDal2.Content, "ItemId=" + objDnnTaskManagerDal2.ItemId.ToString());
         //    SearchItemCollection.Add(SearchItem);
         //}
 

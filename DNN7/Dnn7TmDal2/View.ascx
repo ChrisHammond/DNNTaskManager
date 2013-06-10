@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="View.ascx.cs" Inherits="DotNetNuke.Modules.Dnn7TmDal2.View" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="View.ascx.cs" Inherits="Christoc.Modules.DnnTaskManagerDal2.View" %>
 <asp:Repeater ID="rptTaskList" runat="server" OnItemDataBound="rptTaskListOnItemDataBound" OnItemCommand="rptTaskListOnItemCommand">
     <HeaderTemplate>
         <ul class="tm_tl">

@@ -1,5 +1,5 @@
 ﻿/*
-' Copyright (c) 2013 DotNetNuke Corporation
+' Copyright (c) 2013 Christoc.com Software Solutions
 '  All rights reserved.
 ' 
 ' Permission is hereby granted, free of charge, to any person obtaining a copy of this
@@ -21,9 +21,9 @@
 
 using DotNetNuke.Entities.Modules;
 
-namespace DotNetNuke.Modules.Dnn7TmDal2
+namespace Christoc.Modules.DnnTaskManagerDal2
 {
-    public class Dnn7TmDal2ModuleSettingsBase : ModuleSettingsBase
+    public class DnnTaskManagerDal2ModuleSettingsBase : ModuleSettingsBase
     {
     }
 }
