@@ -1,7 +1,7 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
     <package name="DNNTaskManagerDal1" type="Module" version="00.00.01">
-      <friendlyName>DNNTaskManagerDAL1</friendlyName>
+      <friendlyName>DnnTaskManagerDal1</friendlyName>
       <description>Christoc's Task Manager module for DotNetNuke 7 using DAL (data access layer)</description>
       <iconFile>Images/icon_extensions.gif</iconFile>
       <owner>
