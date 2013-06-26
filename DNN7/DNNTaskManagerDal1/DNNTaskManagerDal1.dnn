@@ -1,0 +1,103 @@
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="DNNTaskManagerDal1" type="Module" version="00.00.01">
+      <friendlyName>DNNTaskManagerDAL1</friendlyName>
+      <description>Christoc's Task Manager module for DotNetNuke 7 using DAL (data access layer)</description>
+      <iconFile>Images/icon_extensions.gif</iconFile>
+      <owner>
+        <name>Christoc.com Software Solutions</name>
+        <organization>Christoc.com</organization>
+        <url>http://www.christoc.com</url>
+        <email>modules@christoc.com</email>
+      </owner>
+      <license src="License.txt"></license>
+      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <dependencies>
+        <dependency type="CoreVersion">07.00.02</dependency>
+      </dependencies>
+      
+      <components>
+        <component type="Script">
+          <scripts>
+            <basePath>DesktopModules\DNNTaskManagerDal1</basePath>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>00.00.01.SqlDataProvider</name>
+              <version>00.00.01</version>
+            </script>
+            <script type="UnInstall">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>Uninstall.SqlDataProvider</name>
+              <version>00.00.01</version>
+            </script>
+          </scripts>
+        </component>
+
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules/DNNTaskManagerDal1</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+
+        <component type="Module">
+          <desktopModule>
+            <moduleName>DNNTaskManagerDal1</moduleName>
+            <foldername>DNNTaskManagerDal1</foldername>
+            <businessControllerClass>Christoc.Modules.DnnTaskManagerDal1.Components.FeatureController</businessControllerClass>
+            <supportedFeatures />
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>DNNTaskManagerDal1</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>DesktopModules/DNNTaskManagerDal1/View.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Edit</controlKey>
+                    <controlSrc>DesktopModules/DNNTaskManagerDal1/Edit.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Edit Content</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                    <supportsPopUps>True</supportsPopUps>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Settings</controlKey>
+                    <controlSrc>DesktopModules/DNNTaskManagerDal1/Settings.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>DNNTaskManagerDal1 Settings</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>
+        <component type="Assembly">
+          <assemblies>
+            <basePath>bin</basePath>
+            <assembly>
+              <name>DNNTaskManagerDal1.dll</name>
+            </assembly>
+          </assemblies>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>
