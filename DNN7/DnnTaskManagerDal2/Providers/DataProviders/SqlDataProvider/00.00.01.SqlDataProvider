@@ -1,0 +1,44 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}DnnTaskManagerDal2_Tasks]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}DnnTaskManagerDal2_Tasks]
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}DnnTaskManagerDal2_Tasks
+    (
+    TaskId int NOT NULL IDENTITY (1, 1),
+    TaskName nvarchar(MAX) NOT NULL,
+    TaskDescription nvarchar(MAX) NOT NULL,
+    AssignedUserId int NULL,
+    ModuleId int NOT NULL,
+	TargetCompletionDate datetime NULL,
+    CompletedOnDate datetime NULL,
+    CreatedOnDate datetime NOT NULL,
+    CreatedByUserId int NOT NULL,
+    LastModifiedOnDate datetime NOT NULL,
+    LastModifiedByUserId int NOT NULL
+    )  ON [PRIMARY]
+     TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+ALTER TABLE {databaseOwner}{objectQualifier}DnnTaskManagerDal2_Tasks ADD CONSTRAINT
+    PK_{objectQualifier}DnnTaskManagerDal2_Tasks PRIMARY KEY CLUSTERED 
+    (
+    TaskId
+    ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+GO
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/
